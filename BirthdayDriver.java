@@ -5,20 +5,46 @@ public class BirthdayDriver {
 		System.out.print("Eneter Your date Of Barth onlay Date Like (15) :");
 		int date=sc.nextInt();
 		System.out.println("Enter Your birth month first 3 letter of month Like (jan):");
-		String month=new Scanner(System.in).next().toUpperCase();
+		//String month=new Scanner(System.in).next().toUpperCase();
+		String month=sc.next().toUpperCase();
 	    System.out.println("Enter Your Year of Barth like(2003):");
-	    int year=sc.nextInt();	
-		System.out.println(monthCode(month));
-		System.out.println(getYearCode(year));
+	    int year=sc.nextInt();
+		System.out.println("Date is: "+date);
+		System.out.println("MonthCode Is: "+monthCode(month));
+		int assingMonthCode=monthCode(month);
+		System.out.println("Year Code is: "+getYearCode(year));
+		int assingYearCode=getYearCode(year);
+		System.out.println("Last Digit Of Year Is: "+lastDigitYear(year));
+		int quatient1=lastDigitYear(year);
+		int quatientYear=quatientOfYear(quatient1);
+		System.out.println("Quatient of year Is: "+quatientYear);
+		
+		// Total/7
+		int total=date + assingMonthCode + assingYearCode + quatientYear+quatient1;
+		System.out.println("Total is: "+total);
+		
+		int isdayNumber=total%7;
+		System.out.println("Day Num is:"+isdayNumber);
+		if (year%4==0)
+		{
+			if ((date>=1 && month.equals("JAN"))&& (date<=29 && month.equals("feb")))
+			{
+				isdayNumber=isdayNumber-1;
+				System.out.println("Day is:"+getDay(isdayNumber));	
+			}
+		}
+		System.out.println("Day is:"+getDay(isdayNumber));
 		
 	}
-	/*
-	public static double lastDigitYear(int year){
-		int num=year;
-		while (num!=0)
-		{
-		}
-		*/
+	public static int quatientOfYear(int quatient1){
+		int quatient2 = quatient1/4;
+		return quatient2;
+		
+	}
+	
+	public static int lastDigitYear(int year){
+		int lastTwoDigit =year%100;
+		return lastTwoDigit;			
 	}
 	// Method Get Month Code
 	public static int monthCode(String month){
@@ -105,6 +131,32 @@ public class BirthdayDriver {
 		}
 		return 0;
 	}
+	
+	public static String getDay(int num) {
+    if (num == 1) {
+        return "Monday";
+    }
+    if (num == 2) {
+        return "Tuesday";
+    }
+    if (num == 3) {
+        return "Wednesday";
+    }
+    if (num == 4) {
+        return "Thursday";
+    }
+    if (num == 5) {
+        return "Friday";
+    }
+    if (num == 6) {
+        return "Saturday";
+    }
+    if (num == 0) {
+        return "Sunday";
+    }
+    return "Wrong Choice";
+}
+
 
 
 }
